@@ -1,0 +1,7 @@
+[Tracker]
+baseurl = https://www.lotro.com/en/forums/
+maxlen = 280
+consumer_key =
+consumer_secret =
+access_key =
+access_secret =

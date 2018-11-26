@@ -1,0 +1,14 @@
+This takes posts by developers on the official LOTRO forums and tweets them.
+
+https://twitter.com/lotro_dev_track
+
+This is needed because there's currently no RSS feed on the tracker, and I like
+seeing them on Twitter.
+
+Posts are from: 
+
+  https://www.lotro.com/en/forums/post_tracker.php?tracker=devtracker
+
+Requires Python 3 and the Tweepy module
+
+Rename config.txt.dist to config.txt and fill in your Twitter API credentials
