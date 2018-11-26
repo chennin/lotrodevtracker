@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import requests
-import sys, os
+import sys, os, time
 import configparser
 from lxml import html
 from dateutil import parser
@@ -106,14 +106,20 @@ for post in reversed(doc.find_class('trackerbit')):
       # This is a do ... while loop in Python that cuts down the post title until
       # tweet length is less than max tweet length (counts urls fully, currently)
       while True:
-        tweet = "#LOTRO dev post by {3} in {0} > {1} @ {2}".format(forum, title, config['baseurl'] + url, by)
+        tweet = "#LOTRO dev post by {3} in {0} > \"{1}\" @ {2}".format(forum, title, config['baseurl'] + url, by)
         if len(tweet) < int(config['maxlen']):
           break
         title = title[:-3]
 
       ts = newts
       print("Tweeted: {}".format(tweet))
-      api.update_status(status=tweet)
+      try:
+        api.update_status(status=tweet)
+      except tweepy.error.TweepError as e:
+        if e.code == 187: #Status is a duplicate.
+          pass
+        else:
+          raise
       time.sleep(0.25)
   else:
     # Info missing .. debug
