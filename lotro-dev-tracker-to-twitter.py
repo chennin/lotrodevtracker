@@ -24,6 +24,8 @@ config = {
 for var in list(config.keys()) + ['consumer_key', 'consumer_secret', 'access_key', 'access_secret']:
   try:
     config[var] = configReader.get("Tracker", var)
+    if not config[var]:
+      fail("{} is not set".format(var))
   except configparser.NoSectionError as e:
     fail("{}. Does {} exist, is it readable, and is there a [Tracker] section?".format(e, configname))
   except configparser.NoOptionError as e:
