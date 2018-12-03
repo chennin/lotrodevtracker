@@ -114,6 +114,8 @@ for post in reversed(doc.find_class('trackerbit')):
         if len(tweet) < int(config['maxlen']):
           break
         title = title[:-3]
+        if len(title) <= 0:
+          fail("Tweet too long somehow,\nforum: {}\nurl: {}\nby: {}\n".format(forum, config['baseurl'] + url, by))
 
       ts = newts
       print("Tweeted: {}".format(tweet))
