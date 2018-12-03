@@ -104,6 +104,8 @@ for post in reversed(doc.find_class('trackerbit')):
   # timestamp, tweet
   if title and url and forum and by:
     if newts > ts:
+      # Replace @ symbols to avoid mentioning Twitter accounts
+      title = title.replace("@","[at]")
       tweet = ""
       # This is a do ... while loop in Python that cuts down the post title until
       # tweet length is less than max tweet length (counts urls fully, currently)
