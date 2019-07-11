@@ -123,7 +123,7 @@ for post in reversed(doc.find_class('trackerbit')):
       try:
         api.update_status(status=tweet)
       except tweepy.error.TweepError as e:
-        if e.code == 187: #Status is a duplicate.
+        if e.response.text == 187: #Status is a duplicate.
           pass
         else:
           raise
