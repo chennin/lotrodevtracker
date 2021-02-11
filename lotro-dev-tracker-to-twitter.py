@@ -45,7 +45,7 @@ except:
 # Get web site
 try:
   r = requests.get("{}{}".format(config['baseurl'], "post_tracker.php?tracker=devtracker",
-                    timeout=30))
+                    timeout=45))
 except IOError as e:
   fail(e)
 except Exception as e:
