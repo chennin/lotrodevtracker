@@ -24,7 +24,7 @@ configReader.read("{}/{}".format(mydir, configname))
 
 # Some defaults
 config = {
-  'baseurl': "https://www.lotro.com/en/forums/",
+  'baseurl': "https://forums.lotro.com/en/forums/",
   'maxlen': "280",
 }
 for var in list(config.keys()) + ['consumer_key', 'consumer_secret', 'access_key', 'access_secret']:
