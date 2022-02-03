@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 import requests
+import urllib3
+requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS = 'ALL:@SECLEVEL=1'
 import sys, os, time
 import configparser
 from lxml import html
 from dateutil import parser
 import tweepy
+
+# ignore tzinfo warnings
+import warnings
+warnings.simplefilter("ignore")
 
 def fail(message):
   print("ERROR: {}".format(message), file=sys.stderr)
